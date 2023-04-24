@@ -14,7 +14,17 @@ export default class CreateRoomPage extends Component {
         return (
             <Grid container spacing={1}>
                 <Grid item xs={12} align="center">
-                    <Typography component='h4' variant='h4'>Create a room</Typography>
+                    <Typography component='h4' variant='h4'>Create A Room</Typography>
+                </Grid>
+
+                <Grid item xs={12} align="center">
+                    <FormControl component='fieldset'>
+                        <FormHelperText>
+                            <div align='center'>
+                                Guest Control of Playback State
+                            </div>
+                        </FormHelperText>
+                    </FormControl>
                 </Grid>
             </Grid>
         )
