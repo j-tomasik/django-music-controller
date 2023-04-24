@@ -9,9 +9,12 @@ export default class Homepage extends Component {
     }
 
     render() {
-        return (<Router>
+        return (
+        <Router>
             <Switch>
-                <Route  exact path="/">This is the home page</Route>
+                <Route  exact path="/">
+                    <p>This is the Home Page</p>
+                </Route>
                 <Route path='/join' component={RoomJoinPage}></Route>
                 <Route path='/create' component={CreateRoomPage}></Route>
             </Switch>
