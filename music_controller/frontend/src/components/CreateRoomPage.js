@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import{ Button, Grid, Typography, TextField, FormHelperText, FormControl, Radio, RadioGroup, FormLabelControl } from'@mui/material'
+import{ Button, Grid, Typography, TextField, FormHelperText, FormControl, Radio, RadioGroup, FormControlLabel } from'@mui/material'
 import {Link } from 'react-router-dom'
 
 
@@ -25,12 +25,12 @@ export default class CreateRoomPage extends Component {
                             </div>
                         </FormHelperText>
                         <RadioGroup row defaultValye='true'>
-                            <FormLabelControl value='true' 
+                            <FormControlLabel value='true' 
                             control={<Radio color='primary' />} 
                             label='Play/Pause'
                             labelPlacement='bottom'
                             />
-                            <FormLabelControl value='true' 
+                            <FormControlLabel value='true' 
                             control={<Radio color='secondary' />} 
                             label="No Control"
                             labelPlacement='bottom'
