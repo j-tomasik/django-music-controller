@@ -12,8 +12,8 @@ export default class App extends Component {
     render() {
         return (
             <div>
-                helloooooo
-                {/* <Homepage /> */}
+                hello
+                <Homepage />
             </div>
         )
 
