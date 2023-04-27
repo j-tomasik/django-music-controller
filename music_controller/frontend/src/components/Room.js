@@ -9,6 +9,22 @@ export default class Room extends Component {
             isHost: false
         }
         this.roomCode = this.props.match.params.roomCode;
+        this.getRoomDetails()
+    }
+
+    getRoomDetails() {
+        fetch('/api/get-room/' + '?code=' + this.roomCode)
+        .then((response) => {
+            console.log('response', response)
+            return response.json()
+        })
+        .then((data) => {
+            this.setState({
+                votesToSkip: data.votes_to_skip,
+                guestCanPause: data.guest_can_pause,
+                isHost: data.is_host,
+            });
+        });
     }
 
     render(){
@@ -16,8 +32,8 @@ export default class Room extends Component {
                 <div>
                     <h3>{this.roomCode}</h3>
                     <p> Votes:{this.state.votesToSkip}</p>
-                    <p>Guest Can Pause:{this.state.guestCanPause}</p>
-                    <p>You are the Host: {this.state.isHost}</p>
+                    <p>Guest Can Pause:{this.state.guestCanPause.toString()}</p>
+                    <p>You are the Host: {this.state.isHost.toString()}</p>
                 </div>  
             ) 
     }
