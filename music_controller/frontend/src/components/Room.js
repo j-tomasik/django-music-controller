@@ -13,11 +13,8 @@ export default class Room extends Component {
     }
 
     getRoomDetails() {
-        fetch('/api/get-room/' + '?code=' + this.roomCode)
-        .then((response) => {
-            console.log('response', response)
-            return response.json()
-        })
+        fetch("/api/get-room" + "?code=" + this.roomCode)
+        .then((response) => response.json())
         .then((data) => {
             this.setState({
                 votesToSkip: data.votes_to_skip,
