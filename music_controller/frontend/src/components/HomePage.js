@@ -16,6 +16,10 @@ export default class HomePage extends Component {
     super(props);
   }
 
+  async componentDidMount(){
+    
+  }
+
   renderHomPage() {
     return(
       <Grid container spacing={3}>
