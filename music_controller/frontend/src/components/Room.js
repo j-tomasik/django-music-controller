@@ -1,6 +1,6 @@
 import React, { Component} from 'react';
-import {Grid, Button, Typography} from '@material-ui/core'
-import {Link} from 'react-router-dom'
+import {Grid, Button, Typography} from '@material-ui/core';
+import {Link} from 'react-router-dom';
 
 export default class Room extends Component {
     constructor(props){
@@ -11,7 +11,8 @@ export default class Room extends Component {
             isHost: false
         }
         this.roomCode = this.props.match.params.roomCode;
-        this.getRoomDetails()
+        this.getRoomDetails();
+        this.leaveButtonPressed = this.leaveButtonPressed.bind(this);
     }
 
     getRoomDetails() {
@@ -24,6 +25,10 @@ export default class Room extends Component {
                 isHost: data.is_host,
             });
         });
+    }
+
+    leaveButtonPressed(){
+        
     }
 
     render(){
