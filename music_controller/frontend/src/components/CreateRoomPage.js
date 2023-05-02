@@ -9,7 +9,8 @@ import { Link } from "react-router-dom";
 import Radio from "@material-ui/core/Radio";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
-import {Collpase} from '@material-ui/core'
+import {Collpase} from '@material-ui/core';
+import Alert from "@material-ui/lab/Alert";
 
 export default class CreateRoomPage extends Component {
   static defaultProps = {
@@ -133,7 +134,8 @@ export default class CreateRoomPage extends Component {
         <Grid item xs={12} align="center">
           <Typography component="h4" variant="h4">
             <Collpase in={this.state.errorMsg != '' || this.state.successMsg != ''}>
-              {this.state.successMsg}
+
+              {this.state.successMsg != "" ? (<Alert severity='success' onClose={() => {this.setState({successMsg: ''})}}>{this.state.successMsg}</Alert>) : (<Alert severity='error' onClose={() => {this.setState({errorMsg: ''})}}>{this.state.errorMsg}</Alert>)}
             </Collpase>
           </Typography>
         </Grid>
