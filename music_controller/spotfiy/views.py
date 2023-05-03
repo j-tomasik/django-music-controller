@@ -7,7 +7,7 @@ from rest_framework.response import Response
 
 
 class AuthURL(APIView):
-    def get(self, request), format=None:
+    def get(self, request, format=None):
         scopes = 'user-read-playback-state user-modify-playback-state user-read-currently-playing'
 
         url = Request('GET', 'https:///accounts.spotfiy.com/authorize', params={
