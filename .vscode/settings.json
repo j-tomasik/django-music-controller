@@ -1,0 +1,5 @@
+{
+    "python.analysis.extraPaths": [
+        "./music_controller/music_controller"
+    ]
+}
