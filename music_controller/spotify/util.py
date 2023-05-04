@@ -26,7 +26,7 @@ def update_or_create_user_tokens(session_id, access_token, token_type, expires_i
         tokens = SpotifyToken(user=session_id, access_token=access_token, token_type=token_type, expires_in=expires_in)
         tokens.save()
 
-def is_spotfiy_athenticated(session_id):
+def is_spotfiy_authenticated(session_id):
     tokens = get_user_tokens(session_id)
     if tokens:
         expiry = tokens.expires_in
