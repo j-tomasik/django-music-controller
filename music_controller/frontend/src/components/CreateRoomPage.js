@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 import Radio from "@material-ui/core/Radio";
 import RadioGroup from "@material-ui/core/RadioGroup";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
-import {Collpase} from '@material-ui/core';
+import {Collapse} from '@material-ui/core';
 import Alert from "@material-ui/lab/Alert";
 
 export default class CreateRoomPage extends Component {
@@ -108,7 +108,7 @@ export default class CreateRoomPage extends Component {
         code: this.props.roomCode,
       }),
     };
-    console.log('requestOptions', requestOptions)
+    
     fetch("/api/update-room", requestOptions)
       .then((response) => {
         if (response.ok){
@@ -133,10 +133,10 @@ export default class CreateRoomPage extends Component {
       <Grid container spacing={1}>
         <Grid item xs={12} align="center">
           <Typography component="h4" variant="h4">
-            <Collpase in={this.state.errorMsg != '' || this.state.successMsg != ''}>
+            <Collapse in={this.state.errorMsg != '' || this.state.successMsg != ''}>
 
               {this.state.successMsg != "" ? (<Alert severity='success' onClose={() => {this.setState({successMsg: ''})}}>{this.state.successMsg}</Alert>) : (<Alert severity='error' onClose={() => {this.setState({errorMsg: ''})}}>{this.state.errorMsg}</Alert>)}
-            </Collpase>
+            </Collapse>
           </Typography>
         </Grid>
         <Grid item xs={12} align="center">
@@ -186,8 +186,7 @@ export default class CreateRoomPage extends Component {
             </FormHelperText>
           </FormControl>
         </Grid>
-        {this.props.update ? this.renderUpdateButtons() : this.renderCreateButtons
-        }
+        {this.props.update ? this.renderUpdateButtons() : this.renderCreateButtons()}
       </Grid>
     );
   }

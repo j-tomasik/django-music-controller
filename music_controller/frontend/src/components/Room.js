@@ -19,6 +19,7 @@ export default class Room extends Component {
         this.renderSettings = this.renderSettings.bind(this);
         this.renderSetttingsButton = this.renderSetttingsButton.bind(this);
         this.getRoomDetails = this.getRoomDetails.bind(this);
+        this.authenticateSpotify = this.authenticateSpotify.bind(this);
         this.getRoomDetails();
 
     }
@@ -39,18 +40,25 @@ export default class Room extends Component {
                 isHost: data.is_host,
             });
         });
-        if(this.state.is_host) {
-            this.authenticateSpotifying()
+        if(this.state.isHost) {
+            this.authenticateSpotify()
         }
         
     }
 
     authenticateSpotify(){
+        print('auth function fired')
         fetch('/spotfiy/is-authenticated').then((response) => response.json())
         .then((data) => {
             this.setState({
                 spotifyAuthenticated: data.status
-            })
+            });
+            if(!data.status){
+                fetch('spotify/get-auth-url').then((response) => response.json())
+                .then((data) => {
+                    window.location.replace(data.url) 
+                })
+            }
         }) 
     }
 
