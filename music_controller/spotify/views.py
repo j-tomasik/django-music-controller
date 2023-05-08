@@ -1,4 +1,5 @@
 from django.shortcuts import redirect, render
+from api.models import Room
 from music_controller.settings import CLIENT_ID, CLIENT_SECRET, REDIRECT_URI
 from rest_framework.views import APIView
 from requests import Request, post
@@ -54,4 +55,12 @@ class IsAuthenticated(APIView):
         is_authenticated = is_spotify_authenticated(self.request.session.session_key)
         return Response({'status': is_authenticated}, status=status.HTTP_200_OK)
     
+    
+class CurrentSong(APIView):
+    def get(self, request, format=None):
+        room_code = self.request.session.get('room_code')
+        room = Room.objects.filter(code=room_code)[0]
+        host = room.host
+        endpoint = '/player/currently-playing'
+        
     

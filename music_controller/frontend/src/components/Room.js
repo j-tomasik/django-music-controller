@@ -55,7 +55,7 @@ export default class Room extends Component {
             });
             if(!data.status){
                 console.log('status date came back false, firing get-auth-url fetch')
-                fetch('spotify/get-auth-url').then((response) => response.json())
+                fetch('/spotify/get-auth-url').then((response) => response.json())
                 .then((data) => {
                     window.location.replace(data.url) 
                 })
