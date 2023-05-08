@@ -5,14 +5,14 @@ from rest_framework.views import APIView
 from requests import Request, post
 from rest_framework import status
 from rest_framework.response import Response
-from .util import update_or_create_user_tokens, is_spotify_authenticated
+from .util import *
 
 
 class AuthURL(APIView):
     def get(self, request, format=None):
         scopes = 'user-read-playback-state user-modify-playback-state user-read-currently-playing'
         print('redirect uri and client id in auth view', REDIRECT_URI, CLIENT_ID)
-        url = Request('GET', 'https:///accounts.spotify.com/authorize', params={
+        url = Request('GET', 'https://accounts.spotify.com/authorize', params={
             'scope': scopes,
             'response_type': 'code',
             'redirect_uri': REDIRECT_URI,
@@ -62,5 +62,7 @@ class CurrentSong(APIView):
         room = Room.objects.filter(code=room_code)[0]
         host = room.host
         endpoint = '/player/currently-playing'
+        response = execute_spotify_api_request(host, endpoint)
+        
         
     

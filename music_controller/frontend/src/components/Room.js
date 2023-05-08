@@ -40,21 +40,21 @@ export default class Room extends Component {
                 isHost: data.is_host,
             });
             if(this.state.isHost) {
-            console.log('you are host, should trigger auth spotify function')
+            
             this.authenticateSpotify()
             }
         });
     }
 
     authenticateSpotify(){
-        console.log('auth function fired')
+        
         fetch('/spotify/is-authenticated').then((response) => response.json())
         .then((data) => {
             this.setState({
                 spotifyAuthenticated: data.status
             });
             if(!data.status){
-                console.log('status date came back false, firing get-auth-url fetch')
+                
                 fetch('/spotify/get-auth-url').then((response) => response.json())
                 .then((data) => {
                     window.location.replace(data.url) 
