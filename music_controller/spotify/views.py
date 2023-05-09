@@ -78,13 +78,13 @@ class CurrentSong(APIView):
         is_playing = response.get('is_playing')
         song_id = item.get('id')
         
-        arist_string = ''
+        artist_string = ''
         
         for i, artist in enumerate(item.get('artists')):
             if i > 0:
                 artist_string += ', '
             name = artist.get('name')
-            arist_string += name
+            artist_string += name
         
         song = {
             'title': item.get('name'),
@@ -127,6 +127,7 @@ class SkipSong(APIView):
         room = Room.objects.filter(code=room_code)[0]
         
         if self.request.session.session_key == room.host:
+            print('SKIP SONG VIEW TRIGGERED')
             skip_song(room.host)
         else:
             pass
