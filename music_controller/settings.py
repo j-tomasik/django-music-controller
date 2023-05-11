@@ -32,7 +32,7 @@ REDIRECT_URI = os.environ.get('REDIRECT_URI')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [r'https://django-music-spotify.herokuapp.com/']
 
 
 # Application definition
