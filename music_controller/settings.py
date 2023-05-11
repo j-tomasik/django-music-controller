@@ -30,9 +30,9 @@ CLIENT_SECRET = os.environ.get('CLIENT_SECRET')
 REDIRECT_URI = os.environ.get('REDIRECT_URI')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['https://django-music-spotify.herokuapp.com']
+ALLOWED_HOSTS = ['django-music-spotify.herokuapp.com']
 
 
 # Application definition
