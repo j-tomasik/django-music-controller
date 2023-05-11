@@ -1,0 +1,21 @@
+{
+  "name": "music-controller",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "heroku-prebuild": "npm install --prefix frontend",
+    "build":"npm run --prefix frontend build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/j-tomasik/django-music-controller.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/j-tomasik/django-music-controller/issues"
+  },
+  "homepage": "https://github.com/j-tomasik/django-music-controller#readme"
+}
