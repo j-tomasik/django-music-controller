@@ -30,7 +30,7 @@ export default class MusicPlayer extends Component {
             method: 'POST',
             headers: {"Content-Type": "application/json"},
         };
-        console.log('SKIP SING FETCH DISPATCHED')
+        
         fetch("/spotify/skip", requestOpions);
     }
 
@@ -55,7 +55,6 @@ export default class MusicPlayer extends Component {
                                 {this.props.is_playing ? <PauseIcon /> : <PlayArrowIcon />}
                             </IconButton>
                             <IconButton onClick={() => {
-                                console.log('ONCLICK FIRED')
                                 this.skipSong()
                             }}> 
                             {this.props.votes} / {"  "} {this.props.votes_required}

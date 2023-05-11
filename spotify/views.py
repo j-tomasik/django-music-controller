@@ -12,7 +12,6 @@ from .models import Vote
 class AuthURL(APIView):
     def get(self, request, format=None):
         scopes = 'user-read-playback-state user-modify-playback-state user-read-currently-playing'
-        print('redirect uri and client id in auth view', REDIRECT_URI, CLIENT_ID)
         url = Request('GET', 'https://accounts.spotify.com/authorize', params={
             'scope': scopes,
             'response_type': 'code',
@@ -51,7 +50,6 @@ def spotify_callback(request, format=None):
     return redirect('frontend:')
     
 class IsAuthenticated(APIView):
-    print('is auth class in backend')
     def get(self, request, format=None):
         is_authenticated = is_spotify_authenticated(self.request.session.session_key)
         return Response({'status': is_authenticated}, status=status.HTTP_200_OK)
