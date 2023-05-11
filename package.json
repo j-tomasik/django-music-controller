@@ -5,7 +5,11 @@
   "main": "index.js",
   "scripts": {
     "heroku-prebuild": "npm install --prefix frontend --legacy-peer-deps",
-    "build":"npm run --prefix frontend build"
+    "build":"npm run --prefix frontend build",
+  },
+  "engines": {
+    "node": "16.15.1",
+    "npm": "8.11.0"
   },
   "repository": {
     "type": "git",
