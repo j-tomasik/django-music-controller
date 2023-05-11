@@ -1,0 +1,11 @@
+
+Django==4.1.7
+djangorestframework==3.14.0
+
+pipenv==2023.2.18
+
+python-dotenv==1.0.0
+
+sqlparse==0.4.3
+
+whitenoise==6.4.0

@@ -14,9 +14,12 @@ export default function Info(props){
 
     function joinInfo(){
         return <Grid container spacing={4}>
-            <Typography variant='h3'>Join a Room Info</Typography>
+            <Grid item align='center'>
+                <Typography component='h2' variant='h4'>Join a Room Info!</Typography>
+            </Grid>
             <Typography variant='body1'>
                 Once someone else has created a room and generated a key and shared it with you...</Typography>
+            <br/>
             <Typography variant='body2'>
                 Hit join a room, enter the room key code then enjoy their music and exercise your ability to play, pause and skip the song!
             </Typography>
@@ -25,10 +28,13 @@ export default function Info(props){
 
     function createInfo(){
         return <Grid container spacing={1}>
-            <Typography variant='h3'>Create a Room Info</Typography>
+            <Grid item align='center'>
+                <Typography component='h2' variant='h4'>Create a Room Info!</Typography>
+            </Grid>
             <Typography variant='body1'>
                 Allow for shared control of a what song your Spotify is playing.
             </Typography>
+            <br/>
             <Typography variant='body2'>
                 1. Play a song or playlist on your Spotify.
                 2. Create a Room and pick your settings.
@@ -45,7 +51,7 @@ export default function Info(props){
     return(
         <Grid container spacing={1}>
             <Grid item xs={12} align='center'>
-                <Typography component='h4' variant='h4'>
+                <Typography component='h2' variant='h4'>
                     What is House Party?
                 </Typography>
                 <Grid item xs={12} align='center'>
