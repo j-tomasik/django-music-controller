@@ -1,0 +1,4 @@
+music_controller/frontend/static/*
+.env
+*/__pycache__
+db.sqlite3
