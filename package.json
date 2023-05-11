@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "heroku-prebuild": "npm install --prefix frontend",
+    "heroku-prebuild": "npm install --prefix frontend --legacy-peer-deps",
     "build":"npm run --prefix frontend build"
   },
   "repository": {
