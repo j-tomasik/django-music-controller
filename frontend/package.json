@@ -11,9 +11,10 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "webpack-cli": "^4.2.0"
+  
   },
   "dependencies": {
+    "webpack-cli": "^4.2.0",
     "@babel/core": "^7.12.3",
     "@babel/preset-env": "^7.12.1",
     "@babel/preset-react": "^7.12.5",
