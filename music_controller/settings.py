@@ -30,9 +30,9 @@ CLIENT_SECRET = os.environ.get('CLIENT_SECRET')
 REDIRECT_URI = os.environ.get('REDIRECT_URI')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['django-music-spotify.herokuapp.com']
+ALLOWED_HOSTS = ['django-music-spotify.herokuapp.com', '127.0.0.1']
 
 
 # Application definition
@@ -130,7 +130,9 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+if DEBUG == True:
+    STATIC_ROOT = os.path.join(BASE_DIR, 'frontend/staticfiles')
+    
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'frontend/static/'),
 )
