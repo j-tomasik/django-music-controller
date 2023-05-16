@@ -15,7 +15,7 @@ export default function Info(props){
     function joinInfo(){
         return <Grid container>
             <Grid item align='center' xs={12}>
-                <Typography component='h2' variant='h4'>Join a Room Info!</Typography>
+                <Typography component='h2' variant='h4' mt={12}>Join a Room Info!</Typography>
                 <Typography variant='body1'>
                 Once someone else has created a room and generated a key and shared it with you...</Typography>
             
