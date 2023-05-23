@@ -17,8 +17,6 @@ class AuthURL(APIView):
             'response_type': 'code',
             'redirect_uri': REDIRECT_URI,
             'client_id': CLIENT_ID,
-            
-            
         }).prepare().url
         
         return Response({'url': url}, status=status.HTTP_200_OK)
@@ -110,7 +108,7 @@ class CurrentSong(APIView):
             votes = Vote.objects.filter(room=room).delete()
     
 class PauseSong(APIView):
-    def put(self,request, format=None):
+    def put(self, response, format=None):
         room_code = self.request.session.get('room_code')
         room = Room.objects.filter(code=room_code)[0]
         if self.request.session.session_key == room.host or room.guest_can_pause:
@@ -136,9 +134,10 @@ class SkipSong(APIView):
         room = Room.objects.filter(code=room_code)[0]
         votes = Vote.objects.filter(room=room, song_id=room.current_song)
         votes_needed = room.votes_to_skip
-        
+        print('session key', request.session.session_key)
+        print('room host id', room.host)
         if self.request.session.session_key == room.host or len(votes) + 1 >= votes_needed:
-            print('SKIP SONG VIEW TRIGGERED')
+            
             votes.delete()
             skip_song(room.host)
         else:

@@ -50,12 +50,12 @@ export default class Room extends Component {
                 isHost: data.is_host,
             });
             if(this.state.isHost) {
-            
             this.authenticateSpotify()
             }
         });
     }
-
+//Checks if user is authenticated by hitting /is-authenticated route in spotify backend of django app
+//if the user is not authenticated it will request the spotify URL from this projects backend and then redirect to that url
     authenticateSpotify() {
     fetch("/spotify/is-authenticated")
         .then((response) => response.json())
@@ -70,7 +70,7 @@ export default class Room extends Component {
         }
         });
     }
-
+    
     getCurrentSong(){
         fetch('/spotify/current-song').then((response) => {
             if (!response.ok) {
