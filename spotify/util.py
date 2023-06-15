@@ -5,10 +5,13 @@ from music_controller.settings import CLIENT_ID, CLIENT_SECRET
 from requests import post, put, get
 
 BASE_URL = "https://api.spotify.com/v1/me/"
-
+    #takes in a session id arg and checks DB for a spotify token that matches
 def get_user_tokens(session_id):
+    
     user_tokens = SpotifyToken.objects.filter(user=session_id)
     if user_tokens.exists():
+        #returns first token if multiple are found
+        print('user token', user_tokens)
         return user_tokens[0]
     else:
         return None
@@ -17,17 +20,23 @@ def get_user_tokens(session_id):
 def update_or_create_user_tokens(session_id, access_token, token_type, expires_in, refresh_token):
     tokens = get_user_tokens(session_id)
     expires_in = timezone.now() + timedelta(seconds=expires_in)
-    
+    #update token with new args if present
     if tokens:
+        print('user tokens', tokens)
         tokens.access_token = access_token
         tokens.refresh_token = refresh_token
         tokens.expires_in = expires_in
         tokens.token_type = token_type
         tokens.save(update_fields=['access_token', 'refresh_token', 'expires_in', 'token_type'])
+        #create new token instance if none exists, using existing model and save to SQLite db
     else:
         tokens = SpotifyToken(user=session_id, access_token=access_token, token_type=token_type, expires_in=expires_in)
         tokens.save()
 
+#grabs token from db using helper func
+#if they exist it checks for expired
+#if expired it calls helper func to refresh token
+#if no tokens it returns False, if not expired it returns True
 def is_spotify_authenticated(session_id):
     tokens = get_user_tokens(session_id)
     if tokens:
