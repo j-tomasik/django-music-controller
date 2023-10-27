@@ -30,7 +30,7 @@ CLIENT_SECRET = os.environ.get('CLIENT_SECRET')
 REDIRECT_URI = os.environ.get('REDIRECT_URI')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['django-playlist-controller.herokuapp.com', '127.0.0.1']
 
@@ -67,7 +67,7 @@ ROOT_URLCONF = 'music_controller.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -136,6 +136,8 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'frontend/static')
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'frontend'),
 )
+
+SETTINGS_PATH = os.path.dirname(os.path.dirname(__file__))
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 

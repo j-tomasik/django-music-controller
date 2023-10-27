@@ -58,9 +58,7 @@ export default class Room extends Component {
 //if the user is not authenticated it will request the spotify URL from this projects backend and then redirect to that url
     authenticateSpotify() {
     fetch("/spotify/is-authenticated")
-        .then((response) => {
-            response.json()
-        })
+        .then((response) => response.json())
         .then((data) => {
         this.setState({ spotifyAuthenticated: data.status });
         if (!data.status) {
@@ -77,14 +75,12 @@ export default class Room extends Component {
         fetch('/spotify/current-song').then((response) => {
             if (!response.ok) {
                 console.log('response not ok', response);
-                return {}
+                throw new Error ('Please select and play a song to play from your spotify on your mobile app or web app')
             } else {
-                console.log('response is ok', response);
                 return response.json()
             }
         }).then((data) => {
             this.setState({song: data});
-            console.log('data', data)
         });
     }
 
