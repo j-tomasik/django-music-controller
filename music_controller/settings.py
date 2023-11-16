@@ -141,8 +141,10 @@ STATICFILES_DIRS = (
 
 ##not sure if this is necessary, similar to how a BASE_DIR variable is built in generic django 
 ##projects, I think this was a patch for a whitenoise bug
+
 SETTINGS_PATH = os.path.dirname(os.path.dirname(__file__))
 
+##
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Default primary key field type
