@@ -76,6 +76,7 @@ export default class Room extends Component {
             if (!response.ok) {
                 console.log('response not ok', response);
                 throw new Error ('Please select and play a song to play from your spotify on your mobile app or web app')
+
             } else {
                 return response.json()
             }
