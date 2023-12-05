@@ -74,9 +74,8 @@ export default class Room extends Component {
     getCurrentSong(){
         fetch('/spotify/current-song').then((response) => {
             if (!response.ok) {
-                console.log('response not ok', response);
-                throw new Error ('Please select and play a song to play from your spotify on your mobile app or web app')
-
+                console.error('response not ok', response);
+                return {}
             } else {
                 return response.json()
             }
