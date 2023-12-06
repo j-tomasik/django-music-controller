@@ -23,6 +23,6 @@
   },
   "homepage": "https://github.com/j-tomasik/django-music-controller#readme",
   "dependencies": {
-    "node": "^21.1.0"
+    "node": "^18.1.0"
   }
 }
