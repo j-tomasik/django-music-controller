@@ -11,6 +11,7 @@ from .models import Vote
 
 class AuthURL(APIView):
     def get(self, request, format=None):
+        print('redirect uri in auth get', REDIRECT_URI)
         scopes = 'user-read-playback-state user-modify-playback-state user-read-currently-playing'
         url = Request('GET', 'https://accounts.spotify.com/authorize', params={
             'scope': scopes,
@@ -25,7 +26,7 @@ class AuthURL(APIView):
 def spotify_callback(request, format=None):
     code = request.GET.get('code')
     error = request.GET.get('error')
-        
+    print('redirect uri in views', REDIRECT_URI)
     response = post('https://accounts.spotify.com/api/token', data={
         'grant_type': 'authorization_code',
         'code': code,

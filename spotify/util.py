@@ -7,8 +7,9 @@ from requests import post, put, get
 BASE_URL = "https://api.spotify.com/v1/me/"
     #takes in a session id arg and checks DB for a spotify token that matches
 def get_user_tokens(session_id):
-    
+    print('session id in get', session_id)
     user_tokens = SpotifyToken.objects.filter(user=session_id)
+    print('user_tokens', user_tokens)
     if user_tokens.exists():
         #returns first token if multiple are found
         print('user token', user_tokens)
@@ -64,7 +65,9 @@ def refresh_spotify_token(session_id):
     update_or_create_user_tokens(session_id, access_token, token_type, expires_in, refresh_token)
     
 def execute_spotify_api_request(session_id, endpoint, post_=False, put_=False):
+    print('session id in execute', session_id)
     tokens = get_user_tokens(session_id)
+    print("tokens", tokens)
     headers = {'Content-Type': 'application/json', 'Authorization': "Bearer " + tokens.access_token}
     
     if post_:
