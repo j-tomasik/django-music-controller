@@ -28,7 +28,7 @@ export default class Room extends Component {
     }
 
     componentDidMount(){
-        this.interval = setInterval(this.getCurrentSong, 1000)
+        this.interval = setInterval(this.getCurrentSong, 2000)
     }
     componentWillUnmount(){
         clearInterval(this.interval);
@@ -61,6 +61,7 @@ export default class Room extends Component {
         .then((response) => response.json())
         .then((data) => {
         this.setState({ spotifyAuthenticated: data.status });
+        
         if (!data.status) {
             fetch("/spotify/get-auth-url")
                 .then((response) => response.json())
@@ -73,6 +74,7 @@ export default class Room extends Component {
     
     getCurrentSong(){
         fetch('/spotify/current-song').then((response) => {
+            console.log('curr song response', response)
             if (!response.ok) {
                 console.error('response not ok', response);
                 return {}
